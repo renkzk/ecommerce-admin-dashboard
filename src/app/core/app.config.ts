@@ -4,12 +4,16 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { CustomErrorHandler } from '../shared/services/custom-error-handler.service';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
     // Use custom error handler
-    { provide: ErrorHandler, useClass: CustomErrorHandler }, provideAnimationsAsync(),
+    { provide: ErrorHandler, useClass: CustomErrorHandler },
+    // Material Providers
+    provideAnimationsAsync(),
+    MatSnackBar,
   ],
 };
