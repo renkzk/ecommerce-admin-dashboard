@@ -17,16 +17,19 @@ export class CustomErrorHandler implements ErrorHandler {
     // for example: Material Snackbar will not be rendered inside "app-root"
 
     // That's why we need to wrap the error handling logic in "this.zone.run()" function.
-
     this.zone.run(() => {
       if (error instanceof HttpErrorResponse) {
-        error = error.error.message;
+        this.snackbar.open(`CustomErrorHandler: ${error.message}`, "Close", {
+          duration: 4000,
+        });
       }
-      this.snackbar.open(`CustomErrorHandler: ${error}`, "Close", {
-        duration: 4000,
-      });
     });
 
-    console.warn(`Caught by CustomErrorHandler: ${error}`);
+    console.group(
+      "%cCaught by CustomErrorHandler",
+      "color: #ffffff; background-color: #522e37; font-family:monospace; font-size: 20px",
+    );
+    console.warn(error);
+    console.groupEnd();
   }
 }
