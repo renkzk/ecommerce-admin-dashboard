@@ -4,6 +4,9 @@ import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { AuthService } from "../services/auth.service";
 import { finalize } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
+import { LocalStorageKey } from "@app/shared/models/enums/local-storage.enum";
+import { Router } from "@angular/router";
+
 @Component({
   selector: "app-login",
   standalone: true,
@@ -11,9 +14,10 @@ import { HttpErrorResponse } from "@angular/common/http";
   templateUrl: "./login.component.html",
 })
 export class LoginComponent {
-  // Injections
-  fb = inject(FormBuilder);
-  authService = inject(AuthService);
+  // Dependencies
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   // Properties
   loginForm = this.fb.nonNullable.group({
@@ -52,11 +56,12 @@ export class LoginComponent {
     this.isLoading = true;
 
     this.authService
-      .login(this.loginForm.getRawValue())
+      .logIn(this.loginForm.getRawValue())
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe({
         next: (res) => {
-          console.log("Login successful");
+          localStorage.setItem(LocalStorageKey.JWT, res.jwt);
+          this.router.navigateByUrl("/");
         },
         error: (err: HttpErrorResponse) => {
           this.error = err.error;
