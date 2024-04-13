@@ -6,11 +6,12 @@ import { finalize } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { LocalStorageKey } from "@app/shared/models/enums/local-storage.enum";
 import { Router } from "@angular/router";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
   selector: "app-login",
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, TranslateModule],
   templateUrl: "./login.component.html",
 })
 export class LoginComponent {
@@ -21,7 +22,7 @@ export class LoginComponent {
 
   // Properties
   loginForm = this.fb.nonNullable.group({
-    identifier: ["", [Validators.required, Validators.minLength(4)]],
+    identifier: ["", [Validators.required, Validators.minLength(3)]],
     password: ["", [Validators.required]],
   });
 

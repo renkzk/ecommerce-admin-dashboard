@@ -1,14 +1,18 @@
 <div class="grid place-items-center h-full">
   <div class="card w-96 p-5">
-    <h1 class="text-3xl p-5 mx-auto">Login</h1>
+    <h1 class="text-3xl p-5 mx-auto">{{ "auth.login" | translate }}</h1>
 
     <form class="flex flex-col gap-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <!-- Identifier(Username/Email) -->
       <section>
         @if(isInvalid('identifier')) {
         <div class="text-right mb-1">
-          <div *ngIf="identifier?.errors?.['required']">Field is required.</div>
-          <div *ngIf="identifier?.errors?.['minlength']">Must be at least 4 characters long.</div>
+          <div *ngIf="identifier?.errors?.['required']">
+            {{ "form.field-required" | translate }}
+          </div>
+          <div *ngIf="identifier?.errors?.['minlength']">
+            {{ "form.field-min-length-3" | translate }}
+          </div>
         </div>
         }
 
@@ -34,7 +38,7 @@
       <section>
         @if(isInvalid('password')) {
         <div class="text-right mb-1">
-          <div *ngIf="password?.errors?.['required']">Field is required.</div>
+          <div *ngIf="password?.errors?.['required']">{{ "form.field-required" | translate }}</div>
         </div>
         }
 
@@ -75,7 +79,7 @@
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span>{{ error.message }}</span>
+          <span>{{ "error." + error.message | translate }}</span>
         </div>
         }
 
@@ -83,7 +87,8 @@
         <button type="submit" [disabled]="isLoading" class="btn btn-accent w-full mt-5">
           @if(isLoading) {
           <span class="loading loading-spinner"></span>
-          } Submit
+          }
+          {{ "auth.submit" | translate }}
         </button>
       </section>
     </form>
