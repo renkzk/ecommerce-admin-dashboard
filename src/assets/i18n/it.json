@@ -1,0 +1,22 @@
+{
+  "hello-world": "Ciao, Mondo!",
+  "auth": {
+    "login": "Accedi",
+    "logout": "Esci",
+    "submit": "Invia"
+  },
+  "form": {
+    "field-required": "Il campo è obbligatorio",
+    "field-min-length-3": "Il campo deve avere almeno 3 caratteri"
+  },
+  "error": {
+    "user-not-found": "Utente non trovato",
+    "incorrect-password": "Password incorretta",
+    "unauthorized": "Utente non autorizzato",
+    "Internal Server Error": "Errore interno del server"
+  },
+  "language": {
+    "en": "English",
+    "it": "Italiano"
+  }
+}

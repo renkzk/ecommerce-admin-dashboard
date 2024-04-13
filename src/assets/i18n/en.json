@@ -1,0 +1,22 @@
+{
+  "hello-world": "Hello, World!",
+  "auth": {
+    "login": "Login",
+    "logout": "Sign out",
+    "submit": "Submit"
+  },
+  "form": {
+    "field-required": "Field is required",
+    "field-min-length-3": "Must be at least 3 characters long."
+  },
+  "error": {
+    "user-not-found": "User not found",
+    "incorrect-password": "Password is wrong",
+    "unauthorized": "User is not authorized",
+    "Internal Server Error": "Internal Server Error"
+  },
+  "language": {
+    "en": "English",
+    "it": "Italiano"
+  }
+}
