@@ -17,7 +17,6 @@ class AuthGuardHandler {
 
   // Methods
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    console.log(this.authService.isAuthenticated());
     if (this.authService.isAuthenticated()) {
       return true;
     } else {
