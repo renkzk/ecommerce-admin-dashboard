@@ -20,7 +20,6 @@ export class ThemeSwitcherComponent implements OnInit {
   }
 
   toggleTheme() {
-    console.log(this.currentTheme);
     const newTheme = this.themeService.getCurrentTheme() === "light" ? "dark" : "light";
     this.themeService.setTheme(newTheme);
   }
