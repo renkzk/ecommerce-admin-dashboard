@@ -6,7 +6,7 @@ import { CustomErrorHandler } from "../shared/services/custom-error-handler.serv
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { createTranslateLoader } from "./i18n/translate-loader";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,15 +22,10 @@ export const appConfig: ApplicationConfig = {
       TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
+          useFactory: createTranslateLoader,
           deps: [HttpClient],
         },
       }),
     ),
   ],
 };
-
-// Factory for creating a TranslateHttpLoader instance.
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
-}
