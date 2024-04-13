@@ -1,20 +1,20 @@
 <div class="grid place-items-center h-full">
-  <div class="card w-96 glass p-5">
+  <div class="card w-96 p-5">
     <h1 class="text-3xl p-5 mx-auto">Login</h1>
 
-    <form
-      class="flex flex-col gap-5"
-      [formGroup]="loginForm"
-      (ngSubmit)="onSubmit()"
-    >
-      <!-- Username -->
-      <div>
-        <div class="text-error text-end" *ngIf="isInvalid('username')">
-          Username is required*
+    <form class="flex flex-col gap-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Identifier(Username/Email) -->
+      <section>
+        @if(isInvalid('identifier')) {
+        <div class="text-right mb-1">
+          <div *ngIf="identifier?.errors?.['required']">Field is required.</div>
+          <div *ngIf="identifier?.errors?.['minlength']">Must be at least 4 characters long.</div>
         </div>
+        }
+
         <label
           class="input input-bordered flex items-center gap-2"
-          [class.input-error]="isInvalid('username')"
+          [class.input-error]="isInvalid('identifier')"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -26,21 +26,18 @@
               d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
             />
           </svg>
-          <input
-            type="text"
-            class="grow"
-            placeholder="Username"
-            formControlName="username"
-            autofocus
-          />
+          <input type="text" class="grow" placeholder="Username" formControlName="identifier" />
         </label>
-      </div>
+      </section>
 
       <!-- Password -->
-      <div>
-        <div class="text-error text-end" *ngIf="isInvalid('password')">
-          Password is required*
+      <section>
+        @if(isInvalid('password')) {
+        <div class="text-right mb-1">
+          <div *ngIf="password?.errors?.['required']">Field is required.</div>
         </div>
+        }
+
         <label
           class="input input-bordered flex items-center gap-2"
           [class.input-error]="isInvalid('password')"
@@ -57,22 +54,38 @@
               clip-rule="evenodd"
             />
           </svg>
-          <input
-            type="password"
-            class="grow"
-            placeholder="Password"
-            formControlName="password"
-          />
+          <input type="password" class="grow" placeholder="Password" formControlName="password" />
         </label>
-      </div>
-      <button
-        type="submit"
-        [disabled]="isLoading"
-        class="btn btn-accent w-full mt-5"
-      >
-        <span *ngIf="isLoading" class="loading loading-spinner"></span>
-        Submit
-      </button>
+      </section>
+
+      <!-- Error -->
+      <section>
+        @if(error) {
+        <div role="alert" class="alert alert-error">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>{{ error.message }}</span>
+        </div>
+        }
+
+        <!-- Submit -->
+        <button type="submit" [disabled]="isLoading" class="btn btn-accent w-full mt-5">
+          @if(isLoading) {
+          <span class="loading loading-spinner"></span>
+          } Submit
+        </button>
+      </section>
     </form>
   </div>
 </div>
