@@ -1,0 +1,41 @@
+<div class="drawer lg:drawer-open z-10">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col items-center justify-center p-6">
+    <!-- Page content here (Button for mobile) -->
+    <label for="my-drawer-2" class="btn drawer-button lg:hidden">
+      <svg
+        width="20"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        class="inline-block h-5 w-5 stroke-current md:h-6 md:w-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </label>
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+      <!-- Sidebar content here -->
+      @for (route of routes; track $index) {
+      <li>
+        <a [routerLink]="[route.path]" routerLinkActive="">
+          <mat-icon>{{ route.icon }}</mat-icon>
+          {{ "drawer." + route.name | translate }}</a
+        >
+      </li>
+      }
+      <button (click)="logOut()" class="btn btn-error btn-outline mt-auto">
+        <mat-icon>logout</mat-icon>
+        {{ "auth.logout" | translate }}
+      </button>
+    </ul>
+  </div>
+</div>

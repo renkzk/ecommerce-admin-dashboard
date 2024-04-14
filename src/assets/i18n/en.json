@@ -13,7 +13,15 @@
     "user-not-found": "User not found",
     "incorrect-password": "Password is wrong",
     "unauthorized": "User is not authorized",
+    "page-not-found": "Page not found",
     "Internal Server Error": "Internal Server Error"
+  },
+  "drawer": {
+    "dashboard": "Dashboard",
+    "customers": "Customers",
+    "categories": "Categories",
+    "products": "Products",
+    "orders": "Orders"
   },
   "language": {
     "en": "English",

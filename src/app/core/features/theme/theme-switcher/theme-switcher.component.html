@@ -1,6 +1,6 @@
 <!-- Switch Button Controller to toggle between light and dark theme -->
 
-<label class="swap swap-rotate">
+<label class="btn swap swap-rotate">
   <!-- this hidden checkbox controls the state -->
   <input
     type="checkbox"
@@ -11,7 +11,7 @@
   <!-- sun icon (light theme) -->
   <svg
     [ngClass]="currentTheme === 'light' ? 'swap-off' : 'swap-on'"
-    class="fill-current w-10 h-10"
+    class="fill-current w-6 h-6"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
   >
@@ -22,7 +22,7 @@
   <!-- moon icon (dark theme) -->
   <svg
     [ngClass]="currentTheme === 'light' ? 'swap-on' : 'swap-off'"
-    class="fill-current w-10 h-10"
+    class="fill-current w-6 h-6"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
   >

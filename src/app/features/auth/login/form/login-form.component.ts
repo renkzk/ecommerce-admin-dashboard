@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
-import { AuthService } from "../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 import { finalize } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { LocalStorageKey } from "@app/shared/models/enums/local-storage.enum";
@@ -9,12 +9,12 @@ import { Router } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
-  selector: "app-login",
+  selector: "app-login-form",
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, TranslateModule],
-  templateUrl: "./login.component.html",
+  templateUrl: "./login-form.component.html",
 })
-export class LoginComponent {
+export class LoginFormComponent {
   // Dependencies
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
